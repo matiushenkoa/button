@@ -1,0 +1,96 @@
+/**
+ * Typography layer — maps tokens → CSS custom properties.
+ * Raw values live in src/design-system/tokens/_typography.scss.
+ */
+@use '../tokens/typography' as typography;
+
+:root {
+  // Font families
+  --font-family-sans: #{typography.$font-family-sans};
+  --font-family-mono: #{typography.$font-family-mono};
+
+  // Font sizes (rem-based for accessibility)
+  --font-size-xs: #{typography.$font-size-xs}; // 12px
+  --font-size-sm: #{typography.$font-size-sm}; // 14px
+  --font-size-base: #{typography.$font-size-base}; // 16px
+  --font-size-lg: #{typography.$font-size-lg}; // 18px
+  --font-size-xl: #{typography.$font-size-xl}; // 20px
+  --font-size-2xl: #{typography.$font-size-2xl}; // 24px
+  --font-size-3xl: #{typography.$font-size-3xl}; // 30px
+  --font-size-4xl: #{typography.$font-size-4xl}; // 36px
+
+  // Font weights
+  --font-weight-normal: #{typography.$font-weight-normal};
+  --font-weight-medium: #{typography.$font-weight-medium};
+  --font-weight-semibold: #{typography.$font-weight-semibold};
+  --font-weight-bold: #{typography.$font-weight-bold};
+
+  // Line heights
+  --line-height-tight: #{typography.$line-height-tight};
+  --line-height-normal: #{typography.$line-height-normal};
+  --line-height-relaxed: #{typography.$line-height-relaxed};
+
+  // Letter spacing
+  --letter-spacing-tight: #{typography.$letter-spacing-tight};
+  --letter-spacing-normal: #{typography.$letter-spacing-normal};
+  --letter-spacing-wide: #{typography.$letter-spacing-wide};
+}
+
+// Base typography styles
+body {
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Typography utility classes (optional)
+.text-xs {
+  font-size: var(--font-size-xs);
+}
+.text-sm {
+  font-size: var(--font-size-sm);
+}
+.text-base {
+  font-size: var(--font-size-base);
+}
+.text-lg {
+  font-size: var(--font-size-lg);
+}
+.text-xl {
+  font-size: var(--font-size-xl);
+}
+.text-2xl {
+  font-size: var(--font-size-2xl);
+}
+.text-3xl {
+  font-size: var(--font-size-3xl);
+}
+.text-4xl {
+  font-size: var(--font-size-4xl);
+}
+
+.font-normal {
+  font-weight: var(--font-weight-normal);
+}
+.font-medium {
+  font-weight: var(--font-weight-medium);
+}
+.font-semibold {
+  font-weight: var(--font-weight-semibold);
+}
+.font-bold {
+  font-weight: var(--font-weight-bold);
+}
+
+.leading-tight {
+  line-height: var(--line-height-tight);
+}
+.leading-normal {
+  line-height: var(--line-height-normal);
+}
+.leading-relaxed {
+  line-height: var(--line-height-relaxed);
+}

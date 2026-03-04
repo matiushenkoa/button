@@ -1,0 +1,219 @@
+/**
+ * Theme layer — maps tokens → CSS custom properties per theme.
+ * Raw values live in src/tokens/; no hex values should appear here.
+ */
+@use '../tokens/colors' as colors;
+@use '../tokens/shadows' as shadows;
+
+// Mixin that writes all CSS variables for a given set of token values
+@mixin theme-colors(
+  $primary,
+  $primary-hover,
+  $primary-active,
+  $primary-disabled,
+  $secondary,
+  $secondary-hover,
+  $secondary-active,
+  $secondary-disabled,
+  $danger,
+  $danger-hover,
+  $danger-active,
+  $danger-disabled,
+  $success,
+  $success-hover,
+  $success-active,
+  $success-disabled,
+  $text-primary,
+  $text-secondary,
+  $text-danger,
+  $text-success,
+  $text-default,
+  $text-muted,
+  $text-disabled,
+  $background,
+  $background-alt,
+  $border,
+  $focus-ring,
+  $shadow-sm,
+  $shadow-md,
+  $shadow-focus
+) {
+  // Primary colors
+  --color-primary: #{$primary};
+  --color-primary-hover: #{$primary-hover};
+  --color-primary-active: #{$primary-active};
+  --color-primary-disabled: #{$primary-disabled};
+
+  // Secondary colors
+  --color-secondary: #{$secondary};
+  --color-secondary-hover: #{$secondary-hover};
+  --color-secondary-active: #{$secondary-active};
+  --color-secondary-disabled: #{$secondary-disabled};
+
+  // Danger colors
+  --color-danger: #{$danger};
+  --color-danger-hover: #{$danger-hover};
+  --color-danger-active: #{$danger-active};
+  --color-danger-disabled: #{$danger-disabled};
+
+  // Success colors
+  --color-success: #{$success};
+  --color-success-hover: #{$success-hover};
+  --color-success-active: #{$success-active};
+  --color-success-disabled: #{$success-disabled};
+
+  // Text on variant backgrounds (foreground when placed on each variant)
+  --color-text-on-primary: #{$text-primary};
+  --color-text-on-secondary: #{$text-secondary};
+  --color-text-on-danger: #{$text-danger};
+  --color-text-on-success: #{$text-success};
+
+  // General text
+  --color-text-default: #{$text-default};
+  --color-text-muted: #{$text-muted};
+  --color-text-disabled: #{$text-disabled};
+
+  // Backgrounds
+  --color-background: #{$background};
+  --color-background-alt: #{$background-alt};
+
+  // Borders
+  --color-border: #{$border};
+  --color-focus-ring: #{$focus-ring};
+
+  // Shadows
+  --shadow-sm: #{$shadow-sm};
+  --shadow-md: #{$shadow-md};
+  --shadow-focus: #{$shadow-focus};
+}
+
+:root[data-theme='light'] {
+  @include theme-colors(
+    // Primary
+    $primary: colors.$brand-700,
+    $primary-hover: colors.$brand-800,
+    $primary-active: colors.$brand-900,
+    $primary-disabled: colors.$brand-300,
+
+    // Secondary
+    $secondary: colors.$neutral-600,
+    $secondary-hover: colors.$neutral-700,
+    $secondary-active: colors.$neutral-800,
+    $secondary-disabled: colors.$neutral-300,
+
+    // Danger
+    $danger: colors.$danger-600,
+    $danger-hover: colors.$danger-700,
+    $danger-active: colors.$danger-800,
+    $danger-disabled: colors.$danger-300,
+
+    // Success
+    $success: colors.$success-700,
+    $success-hover: colors.$success-800,
+    $success-active: colors.$success-900,
+    $success-disabled: colors.$success-300,
+
+    // Text
+    $text-primary: colors.$white,
+    $text-secondary: colors.$white,
+    $text-danger: colors.$white,
+    $text-success: colors.$white,
+    $text-default: colors.$neutral-900,
+    $text-muted: colors.$neutral-500,
+    $text-disabled: colors.$neutral-400,
+
+    // Backgrounds
+    $background: colors.$white,
+    $background-alt: colors.$neutral-50,
+
+    // Borders & focus
+    $border: colors.$neutral-200,
+    $focus-ring: colors.$brand-500,
+
+    // Shadows
+    $shadow-sm: shadows.$shadow-sm-light,
+    $shadow-md: shadows.$shadow-md-light,
+    $shadow-focus: shadows.$shadow-focus-light
+  );
+}
+
+:root[data-theme='dark'] {
+  @include theme-colors(
+    // Primary
+    $primary: colors.$brand-700,
+    $primary-hover: colors.$brand-800,
+    $primary-active: colors.$brand-900,
+    $primary-disabled: colors.$brand-900,
+
+    // Secondary
+    $secondary: colors.$neutral-600,
+    $secondary-hover: colors.$neutral-700,
+    $secondary-active: colors.$neutral-800,
+    $secondary-disabled: colors.$neutral-700,
+
+    // Danger
+    $danger: colors.$danger-600,
+    $danger-hover: colors.$danger-700,
+    $danger-active: colors.$danger-800,
+    $danger-disabled: colors.$danger-900,
+
+    // Success
+    $success: colors.$success-700,
+    $success-hover: colors.$success-800,
+    $success-active: colors.$success-900,
+    $success-disabled: colors.$success-900,
+
+    // Text
+    $text-primary: colors.$white,
+    $text-secondary: colors.$white,
+    $text-danger: colors.$white,
+    $text-success: colors.$white,
+    $text-default: colors.$neutral-100,
+    $text-muted: colors.$neutral-400,
+    $text-disabled: colors.$neutral-500,
+
+    // Backgrounds
+    $background: colors.$neutral-900,
+    $background-alt: colors.$neutral-800,
+
+    // Borders & focus
+    $border: colors.$neutral-700,
+    $focus-ring: colors.$brand-400,
+
+    // Shadows
+    $shadow-sm: shadows.$shadow-sm-dark,
+    $shadow-md: shadows.$shadow-md-dark,
+    $shadow-focus: shadows.$shadow-focus-dark
+  );
+}
+
+// Smooth transition for theme changes
+// Removed from * selector to avoid interfering with component transitions
+:root {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+body {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+// Accessibility: Respect user's motion preferences
+@media (prefers-reduced-motion: reduce) {
+  :root,
+  body,
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+// Accessibility: High contrast mode support
+@media (prefers-contrast: high) {
+  :root {
+    --color-border: currentColor;
+  }
+}

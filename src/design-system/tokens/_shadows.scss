@@ -1,0 +1,14 @@
+// Shadow tokens — raw values split by variant (light / dark).
+// No theme logic here; consumed by the theme mapping layer.
+
+$shadow-sm-light: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$shadow-md-light:
+  0 4px 6px -1px rgba(0, 0, 0, 0.1),
+  0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$shadow-focus-light: 0 0 0 3px rgba(59, 130, 246, 0.3);
+
+$shadow-sm-dark: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+$shadow-md-dark:
+  0 4px 6px -1px rgba(0, 0, 0, 0.6),
+  0 2px 4px -1px rgba(0, 0, 0, 0.5);
+$shadow-focus-dark: 0 0 0 3px rgba(59, 130, 246, 0.5);
