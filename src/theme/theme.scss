@@ -1,0 +1,215 @@
+/**
+ * Global theme SCSS with CSS custom properties
+ * Automatically switches based on data-theme attribute
+ */
+
+// Theme mixin for generating color tokens
+@mixin theme-colors(
+  $primary,
+  $primary-hover,
+  $primary-active,
+  $primary-disabled,
+  $secondary,
+  $secondary-hover,
+  $secondary-active,
+  $secondary-disabled,
+  $danger,
+  $danger-hover,
+  $danger-active,
+  $danger-disabled,
+  $success,
+  $success-hover,
+  $success-active,
+  $success-disabled,
+  $text-primary,
+  $text-secondary,
+  $text-danger,
+  $text-success,
+  $text-default,
+  $text-muted,
+  $text-disabled,
+  $background,
+  $background-alt,
+  $border,
+  $focus-ring,
+  $shadow-sm,
+  $shadow-md,
+  $shadow-focus
+) {
+  // Primary colors
+  --color-primary: #{$primary};
+  --color-primary-hover: #{$primary-hover};
+  --color-primary-active: #{$primary-active};
+  --color-primary-disabled: #{$primary-disabled};
+
+  // Secondary colors
+  --color-secondary: #{$secondary};
+  --color-secondary-hover: #{$secondary-hover};
+  --color-secondary-active: #{$secondary-active};
+  --color-secondary-disabled: #{$secondary-disabled};
+
+  // Danger colors
+  --color-danger: #{$danger};
+  --color-danger-hover: #{$danger-hover};
+  --color-danger-active: #{$danger-active};
+  --color-danger-disabled: #{$danger-disabled};
+
+  // Success colors
+  --color-success: #{$success};
+  --color-success-hover: #{$success-hover};
+  --color-success-active: #{$success-active};
+  --color-success-disabled: #{$success-disabled};
+
+  // Text colors
+  --color-text-primary: #{$text-primary};
+  --color-text-secondary: #{$text-secondary};
+  --color-text-danger: #{$text-danger};
+  --color-text-success: #{$text-success};
+  --color-text-default: #{$text-default};
+  --color-text-muted: #{$text-muted};
+  --color-text-disabled: #{$text-disabled};
+
+  // Backgrounds
+  --color-background: #{$background};
+  --color-background-alt: #{$background-alt};
+
+  // Borders
+  --color-border: #{$border};
+  --color-focus-ring: #{$focus-ring};
+
+  // Shadows
+  --shadow-sm: #{$shadow-sm};
+  --shadow-md: #{$shadow-md};
+  --shadow-focus: #{$shadow-focus};
+}
+
+:root[data-theme='light'] {
+  @include theme-colors(
+    // Primary - Main action color
+    $primary: #1d4ed8,
+    $primary-hover: #1e40af,
+    $primary-active: #1e3a8a,
+    $primary-disabled: #93c5fd,
+
+    // Secondary - Alternative action
+    $secondary: #475569,
+    $secondary-hover: #334155,
+    $secondary-active: #1e293b,
+    $secondary-disabled: #cbd5e1,
+
+    // Danger - Destructive action
+    $danger: #dc2626,
+    $danger-hover: #b91c1c,
+    $danger-active: #991b1b,
+    $danger-disabled: #fca5a5,
+
+    // Success - Positive action
+    $success: #047857,
+    $success-hover: #065f46,
+    $success-active: #064e3b,
+    $success-disabled: #6ee7b7,
+
+    // Text colors
+    $text-primary: #ffffff,
+    $text-secondary: #ffffff,
+    $text-danger: #ffffff,
+    $text-success: #ffffff,
+    $text-default: #0f172a,
+    $text-muted: #64748b,
+    $text-disabled: #94a3b8,
+
+    // Backgrounds
+    $background: #ffffff,
+    $background-alt: #f8fafc,
+
+    // Borders
+    $border: #e2e8f0,
+    $focus-ring: #3b82f6,
+
+    // Shadows
+    $shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05),
+    $shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1) comma 0 2px 4px -1px rgba(0, 0, 0, 0.06),
+    $shadow-focus: 0 0 0 3px rgba(59, 130, 246, 0.3)
+  );
+}
+
+:root[data-theme='dark'] {
+  @include theme-colors(
+    // Primary - Main action color
+    $primary: #1d4ed8,
+    $primary-hover: #1e40af,
+    $primary-active: #1e3a8a,
+    $primary-disabled: #1e3a8a,
+
+    // Secondary - Alternative action
+    $secondary: #475569,
+    $secondary-hover: #334155,
+    $secondary-active: #1e293b,
+    $secondary-disabled: #334155,
+
+    // Danger - Destructive action
+    $danger: #dc2626,
+    $danger-hover: #b91c1c,
+    $danger-active: #991b1b,
+    $danger-disabled: #7f1d1d,
+
+    // Success - Positive action
+    $success: #047857,
+    $success-hover: #065f46,
+    $success-active: #064e3b,
+    $success-disabled: #064e3b,
+
+    // Text colors
+    $text-primary: #ffffff,
+    $text-secondary: #ffffff,
+    $text-danger: #ffffff,
+    $text-success: #ffffff,
+    $text-default: #f1f5f9,
+    $text-muted: #94a3b8,
+    $text-disabled: #64748b,
+
+    // Backgrounds
+    $background: #0f172a,
+    $background-alt: #1e293b,
+
+    // Borders
+    $border: #334155,
+    $focus-ring: #60a5fa,
+
+    // Shadows
+    $shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5),
+    $shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.6) comma 0 2px 4px -1px rgba(0, 0, 0, 0.5),
+    $shadow-focus: 0 0 0 3px rgba(59, 130, 246, 0.5)
+  );
+}
+
+// Smooth transition for theme changes
+// Removed from * selector to avoid interfering with component transitions
+:root {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+body {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+// Accessibility: Respect user's motion preferences
+@media (prefers-reduced-motion: reduce) {
+  :root,
+  body,
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+// Accessibility: High contrast mode support
+@media (prefers-contrast: high) {
+  :root {
+    --color-border: currentColor;
+  }
+}
